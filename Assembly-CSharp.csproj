@@ -67,6 +67,7 @@
     <Compile Include="Assets\Scripts\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\Gerneral\Character.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerAnimations.cs" />
     <Compile Include="Assets\Scripts\Gerneral\CameraFollow.cs" />
   </ItemGroup>
   <ItemGroup>
