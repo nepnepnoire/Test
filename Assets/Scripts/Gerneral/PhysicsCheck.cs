@@ -9,7 +9,6 @@ public class PhysicsCheck : MonoBehaviour
     public LayerMask groundLayer;
     public bool isGround;
     public Vector2 bottomOffset;
-    public bool isDashing = true;//是否可以冲刺,true是可以，false是不可以
 
     public void Update()
     {
@@ -19,8 +18,8 @@ public class PhysicsCheck : MonoBehaviour
     {
         //检测地面
         isGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, checkRaduis, groundLayer);
-        //检测冲刺
-        isDashing = !isGround;
+       
+        
 
     }
 

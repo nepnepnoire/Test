@@ -374,15 +374,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 103438, guid: a2921b55bcf164853960c853662332ad,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 832850693}
+    - targetCorrespondingSourceObject: {fileID: 103438, guid: a2921b55bcf164853960c853662332ad,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 832850674}
     - targetCorrespondingSourceObject: {fileID: 103438, guid: a2921b55bcf164853960c853662332ad,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 832850689}
-    - targetCorrespondingSourceObject: {fileID: 103438, guid: a2921b55bcf164853960c853662332ad,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 832850693}
     - targetCorrespondingSourceObject: {fileID: 103438, guid: a2921b55bcf164853960c853662332ad,
         type: 3}
       insertIndex: -1
@@ -408,12 +408,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   inputDirection: {x: 0, y: 0}
+  pos: {x: 0, y: 0, z: 0}
   speed: 400
-  jumpForce: 1
-  dashForce: 1
+  jumpSpeed: 20
+  dashSpeed: 20
+  dashDis: 0
   dashDuration: 0
   currentSpeed: 0
   isAttacking: 0
+  dashingCondition: 0
 --- !u!4 &832850679 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 466550, guid: a2921b55bcf164853960c853662332ad,
@@ -438,7 +441,6 @@ MonoBehaviour:
     m_Bits: 64
   isGround: 0
   bottomOffset: {x: 0, y: -0.99}
-  isDashing: 0
 --- !u!70 &832850690
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -501,9 +503,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc81540694872af41876fe105353fff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
+  maxHealth: 100
   currentHealth: 0
-  invulnerableDuration: 0
+  invulnerableDuration: 0.5
   invulnerable: 0
 --- !u!1001 &868656212
 PrefabInstance:
@@ -1133,6 +1135,49 @@ CapsuleCollider2D:
   m_Offset: {x: 0.005424941, y: 0.19661704}
   m_Size: {x: 1.1356112, y: 0.60677224}
   m_Direction: 1
+--- !u!114 &1251760487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251760479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc81540694872af41876fe105353fff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
+  currentHealth: 0
+  invulnerableDuration: 0
+  invulnerable: 0
+--- !u!114 &1251760488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251760479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d8a458396b0c86499a24b843d4f4d0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  attackRange: 0
+  attackRate: 0
+--- !u!114 &1251760489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251760479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca7391f8770efe40a29afdb9ff8ff70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1393654096 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 422988, guid: 0114cdacba174488c92aa1edf31baed1,
@@ -1203,6 +1248,18 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1251760485}
+    - targetCorrespondingSourceObject: {fileID: 124218, guid: 4ba430f162f394ec89163bcf70a24ee8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1251760488}
+    - targetCorrespondingSourceObject: {fileID: 124218, guid: 4ba430f162f394ec89163bcf70a24ee8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1251760487}
+    - targetCorrespondingSourceObject: {fileID: 124218, guid: 4ba430f162f394ec89163bcf70a24ee8,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1251760489}
   m_SourcePrefab: {fileID: 100100000, guid: 4ba430f162f394ec89163bcf70a24ee8, type: 3}
 --- !u!1 &1702086459 stripped
 GameObject:
