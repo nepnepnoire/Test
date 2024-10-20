@@ -1,0 +1,813 @@
+fileFormatVersion: 2
+guid: e551c64aceebd4547a202f8fef014f15
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: move_and_jump_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6487
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee5b36896f6b9a94887a7fc327882a90
+      internalID: -1509754950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_1
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 6487
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffbccf6006266a84cb26149d3f3fd63d
+      internalID: 1100584508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_2
+      rect:
+        serializedVersion: 2
+        x: 1914
+        y: 6487
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f78060eae602c648a890a23cec2e003
+      internalID: 725425931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_3
+      rect:
+        serializedVersion: 2
+        x: 2871
+        y: 6487
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 409fe2a2f5653e44faf054ec53c5d114
+      internalID: 335477877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_4
+      rect:
+        serializedVersion: 2
+        x: 3828
+        y: 6487
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea4d9cb040b41734ba52f65d1a662c61
+      internalID: -423891668
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_5
+      rect:
+        serializedVersion: 2
+        x: 4785
+        y: 6487
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 714add5e80b43764cb22db2d11596d5b
+      internalID: -1825409618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_6
+      rect:
+        serializedVersion: 2
+        x: 5742
+        y: 6487
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79813e1b216aeda44a7705d59b115fc0
+      internalID: -1395196940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 5324
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b35647581eb2f34a95bd2506f03059f
+      internalID: -1127791373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_8
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 5324
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41ad3edd6cbd63542b2bc20854ee22e1
+      internalID: 1674167053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_9
+      rect:
+        serializedVersion: 2
+        x: 1914
+        y: 5324
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fc8d30ce0342a24187075136cf7c029
+      internalID: 1558500801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_10
+      rect:
+        serializedVersion: 2
+        x: 2871
+        y: 5324
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe0698b02b44ac54ebfe12a4c6421ccc
+      internalID: 679866219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_11
+      rect:
+        serializedVersion: 2
+        x: 3828
+        y: 5324
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3d25b134e79fca42956636975cc07c2
+      internalID: 1265431576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_12
+      rect:
+        serializedVersion: 2
+        x: 4785
+        y: 5324
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8162818aeffadd64593a997a682544aa
+      internalID: 32968409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_13
+      rect:
+        serializedVersion: 2
+        x: 5742
+        y: 5324
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea00b8ec6cd83894abf56f623c2c20b7
+      internalID: 1527184801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4161
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce2e4a3348815d141a952de64310b5be
+      internalID: -559545391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_15
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 4161
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 766ac8cfde4f4ed4cbc546a73e04747e
+      internalID: 1422498969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_16
+      rect:
+        serializedVersion: 2
+        x: 1914
+        y: 4161
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e03602b83c9c28a45bfa30f7cb832811
+      internalID: 759364680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_17
+      rect:
+        serializedVersion: 2
+        x: 2871
+        y: 4161
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a138db3c17a8efc4eaa038ca254bd9b7
+      internalID: 2042312199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_18
+      rect:
+        serializedVersion: 2
+        x: 3828
+        y: 4161
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec6cd5048aaa1e14b88fc8b186e2a14e
+      internalID: -252706175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_19
+      rect:
+        serializedVersion: 2
+        x: 4785
+        y: 4161
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a360f892ccd7fd41933564e8ce6e428
+      internalID: -333585386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_20
+      rect:
+        serializedVersion: 2
+        x: 5742
+        y: 4161
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a25e92864ed3834d82c894771387377
+      internalID: 303242981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_21
+      rect:
+        serializedVersion: 2
+        x: 2871
+        y: 1835
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e55ef59dff1ddcf498012ea8f4cc0a99
+      internalID: -720061261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_22
+      rect:
+        serializedVersion: 2
+        x: 3828
+        y: 1835
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0dba078b235d12040848ca86e5a36fb9
+      internalID: -1200368340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_23
+      rect:
+        serializedVersion: 2
+        x: 4785
+        y: 1835
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36e73d0a126f1d64082a0dc1df4d2696
+      internalID: 1777230315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 672
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eb73b2675959f4438c8baa0d4d1ca2c
+      internalID: 573877434
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_25
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 672
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f1324f5cab729140ae7a2b27667b4cd
+      internalID: -1467695643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_26
+      rect:
+        serializedVersion: 2
+        x: 2871
+        y: 672
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51b9933022bd70345994ec5bf9736c93
+      internalID: 699044997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_27
+      rect:
+        serializedVersion: 2
+        x: 3828
+        y: 672
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a48d06dc350b06249b172c3f42324d77
+      internalID: 681763120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_28
+      rect:
+        serializedVersion: 2
+        x: 4785
+        y: 672
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fc882603f111fa4999fe9e100bc39a4
+      internalID: -1817896921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: move_and_jump_29
+      rect:
+        serializedVersion: 2
+        x: 5742
+        y: 672
+        width: 957
+        height: 1163
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a20039705c6c2347908af84233e88fa
+      internalID: -970468413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      move_and_jump_0: -1509754950
+      move_and_jump_1: 1100584508
+      move_and_jump_10: 679866219
+      move_and_jump_11: 1265431576
+      move_and_jump_12: 32968409
+      move_and_jump_13: 1527184801
+      move_and_jump_14: -559545391
+      move_and_jump_15: 1422498969
+      move_and_jump_16: 759364680
+      move_and_jump_17: 2042312199
+      move_and_jump_18: -252706175
+      move_and_jump_19: -333585386
+      move_and_jump_2: 725425931
+      move_and_jump_20: 303242981
+      move_and_jump_21: -720061261
+      move_and_jump_22: -1200368340
+      move_and_jump_23: 1777230315
+      move_and_jump_24: 573877434
+      move_and_jump_25: -1467695643
+      move_and_jump_26: 699044997
+      move_and_jump_27: 681763120
+      move_and_jump_28: -1817896921
+      move_and_jump_29: -970468413
+      move_and_jump_3: 335477877
+      move_and_jump_4: -423891668
+      move_and_jump_5: -1825409618
+      move_and_jump_6: -1395196940
+      move_and_jump_7: -1127791373
+      move_and_jump_8: 1674167053
+      move_and_jump_9: 1558500801
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
