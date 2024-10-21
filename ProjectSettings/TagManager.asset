@@ -6,6 +6,7 @@ TagManager:
   tags:
   - QuestionBlock
   - Enemy
+  - Laser
   layers:
   - Default
   - TransparentFX
