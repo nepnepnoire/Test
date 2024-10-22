@@ -5,14 +5,14 @@ using UnityEngine;
 using static UnityEditor.PlayerSettings;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : MonoBehaviour
+{
 
-    
+
 
     public Rigidbody2D rb;
     private PhysicsCheck physicsCheck;
     public Vector2 inputDirection;
-    public Vector3 pos;
     [Header("基本参数")]
     public float speed;
     public float jumpSpeed;
@@ -20,11 +20,18 @@ public class PlayerController : MonoBehaviour {
     public float dashDis;
     public float dashDuration;//冲刺持续时间
     public float currentSpeed;//当前速度
+    public float slideDownSpeed;//下滑速度
+    public float attachedJumpSpeed;//蹬墙跳速度
     [Header("人物状态")]
     public bool isAttacking = false;//是否正在攻击
-                                    
-    public bool dashingCondition = false;//是否可以冲刺
 
+    public bool dashingCondition = false;//是否可以冲刺
+    public bool isDashing = false;//
+    public float DashStartTimer;//冲刺计时器
+    public float DashCDStartTimer;//冲刺冷却
+    public float DashCD;
+    public bool isAttaching;//是否吸附
+    public bool attachCondition;//吸附条件判断
     private float lastAttackTime;
 
 
@@ -37,29 +44,33 @@ public class PlayerController : MonoBehaviour {
     {
         rb = GetComponent<Rigidbody2D>();
         dashingCondition = !physicsCheck.isGround;
-        
+
     }
 
-
-    void Update () {
+    void Update()
+    {
+        DashContinue();
         HandleDash();
         HandleJump();
         HandleAttack();
+        HandleAttach();
     }
+
+
 
     private void FixedUpdate()
     {
         HandleMovement();
-
     }
     private void HandleMovement()
     {
-
         float moveInput = 0;
-
         if (Input.GetKey("a")) moveInput = -1; // 向左
-        if (Input.GetKey("d")) moveInput = 1;  // 向右
-
+        if (Input.GetKey("d") && !physicsCheck.isrightWall) moveInput = 1;  // 向右
+        if (isDashing && transform.localScale.x * moveInput > 0)
+        {
+            return;
+        };
         if (moveInput != 0)
         {
             //和dash冲突处理
@@ -70,7 +81,7 @@ public class PlayerController : MonoBehaviour {
             }
             else HandleDash();
         }
-            
+
         else
         {
             currentSpeed = Mathf.Lerp(currentSpeed, 0, Time.deltaTime * 10);
@@ -89,10 +100,10 @@ public class PlayerController : MonoBehaviour {
             faceDir = -1;
         }
         transform.localScale = new Vector3(faceDir, 1, 1);
-        
+
         //冲突处理
         //&dash
-       
+
     }
 
     public void HandleJump()
@@ -104,27 +115,59 @@ public class PlayerController : MonoBehaviour {
                 rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
                 dashingCondition = true;
             }
+            else if (isAttaching)//附着的时候
+            {
+                rb.velocity = new Vector2(attachedJumpSpeed * -rb.transform.localScale.x, jumpSpeed);
+                transform.localScale = new Vector3(-rb.transform.localScale.x, 1, 1);
+                isAttaching = false;
+            }
         }
     }
+
+
     private void HandleDash()
     {
-        pos = transform.localPosition;
-        if (physicsCheck.isGround) dashingCondition = false;
-        if(Input.GetKey(KeyCode.LeftShift)) 
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             if (dashingCondition)
             {
-                Debug.Log("Dashing!");
-               pos.x += (int)transform.localScale.x * dashDis;
-                transform.localPosition = pos;
-               //rb.velocity = new Vector2((int)transform.localScale.x * dashSpeed, rb.velocity.y);
-               dashingCondition = false;
-
+                rb.velocity = new Vector2((int)transform.localScale.x * dashSpeed, 0);
+                dashingCondition = false;
+                isDashing = true;
+                DashStartTimer = dashDuration;
+                DashCDStartTimer = DashCD;
             }
-            else;
         }
     }
-
+    public void DashContinue()
+    {
+        if (isDashing)
+        {
+            DashStartTimer -= Time.deltaTime;
+            if (DashStartTimer <= 0)
+            {
+                isDashing = false;
+                rb.velocity = new Vector2((int)transform.localScale.x, 0);
+            }
+            else
+            {
+                rb.velocity = new Vector2((int)transform.localScale.x * dashSpeed, 0);
+            }
+        }
+        if (DashCDStartTimer > 0)
+        {
+            DashCDStartTimer -= Time.deltaTime;
+            dashingCondition = false;
+        }
+        else
+        {
+            if (physicsCheck.isGround)
+            {
+                isDashing = false;
+                dashingCondition = false;
+            }
+        }
+    }
     private void HandleAttack()
     {
         if (Input.GetMouseButtonDown(0))
@@ -147,10 +190,7 @@ public class PlayerController : MonoBehaviour {
                 isAttacking = true;
                 lastAttackTime = Time.time;
             }
-
-
         }
-
     }
 
     public void Interact(Interact interactor)
@@ -158,7 +198,23 @@ public class PlayerController : MonoBehaviour {
         Debug.Log("Press E to interact");
     }
 
+    private void HandleAttach()
+    {
+        attachCondition = (!physicsCheck.isGround) && (physicsCheck.isleftWall || physicsCheck.isrightWall);//离地且有墙
 
+        if (attachCondition == true)
+        {
+            //Debug.Log("Attach");
+            //左附着
+            if (Input.GetKey(KeyCode.A))
+            {
+                isAttaching = true;
+                rb.velocity = new Vector2(0, slideDownSpeed);
+
+            }
+
+        }
+    }
 
     /*void CheckPlayerInput()
     {

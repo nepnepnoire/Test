@@ -9,9 +9,9 @@ public class PlayerAnimations : MonoBehaviour
     public PlayerController playerController;
     public PhysicsCheck physicsCheck;
 
-    private void Awake() 
-    { 
-        anim = GetComponent<Animator>(); 
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
         playerController = GetComponent<PlayerController>();
         physicsCheck = GetComponent<PhysicsCheck>();
     }
@@ -23,5 +23,6 @@ public class PlayerAnimations : MonoBehaviour
     {
         anim.SetFloat("currentSpeed", Mathf.Abs(playerController.currentSpeed));
         anim.SetBool("isGround", physicsCheck.isGround);
+        anim.SetBool("isDashing", playerController.isDashing);
     }
 }

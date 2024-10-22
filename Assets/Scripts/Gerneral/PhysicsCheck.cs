@@ -7,8 +7,13 @@ public class PhysicsCheck : MonoBehaviour
     [Header("ºÏ≤‚≤Œ ˝")]
     public float checkRaduis;
     public LayerMask groundLayer;
+    public LayerMask wallLayer;
     public bool isGround;
+    public bool isrightWall;
+    public bool isleftWall;
     public Vector2 bottomOffset;
+    public Vector2 rightOffset;
+    public Vector2 leftOffset;
 
     public void Update()
     {
@@ -18,8 +23,10 @@ public class PhysicsCheck : MonoBehaviour
     {
         //ºÏ≤‚µÿ√Ê
         isGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, checkRaduis, groundLayer);
-       
-        
+        //ºÏ≤‚”“«Ω√Ê
+        isrightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, checkRaduis, wallLayer);
+        //ºÏ≤‚◊Û«Ω√Ê
+        isleftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, checkRaduis, wallLayer);
 
     }
 
@@ -27,5 +34,8 @@ public class PhysicsCheck : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, checkRaduis);
+        Gizmos.DrawSphere((Vector2)transform.position + rightOffset, checkRaduis);
+        Gizmos.DrawSphere((Vector2)transform.position + leftOffset, checkRaduis);
+
     }
 }
