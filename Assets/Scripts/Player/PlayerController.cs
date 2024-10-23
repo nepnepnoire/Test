@@ -51,9 +51,10 @@ public class PlayerController : MonoBehaviour
     {
         DashContinue();
         HandleDash();
+        HandleAttach();
         HandleJump();
         HandleAttack();
-        HandleAttach();
+        
     }
 
 
@@ -115,7 +116,7 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
                 dashingCondition = true;
             }
-            else if (isAttaching)//附着的时候
+             else if (isAttaching)//附着的时候
             {
                 rb.velocity = new Vector2(attachedJumpSpeed * -rb.transform.localScale.x, jumpSpeed);
                 transform.localScale = new Vector3(-rb.transform.localScale.x, 1, 1);
@@ -205,13 +206,18 @@ public class PlayerController : MonoBehaviour
         if (attachCondition == true)
         {
             //Debug.Log("Attach");
-            //左附着
-            if (Input.GetKey(KeyCode.A))
+            //附着
+            if (Input.GetKey(KeyCode.A)||Input.GetKey(KeyCode.D))
+            //if(Input.GetKey(KeyCode.A))
             {
                 isAttaching = true;
                 rb.velocity = new Vector2(0, slideDownSpeed);
 
             }
+
+            else    isAttaching = false;
+
+
 
         }
     }
