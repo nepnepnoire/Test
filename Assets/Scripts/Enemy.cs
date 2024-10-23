@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
 
     public EnemyState enemystate;
     // Start is called before the first frame update
-    void Start()
+    public virtual void Start()
     {
         startPoint = transform.position;
         endPoint = startPoint + new Vector3(patrolDistance, 0, 0); // 在 X 轴上计算结束点
@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         EnemyController();
         if (health <= 0)
@@ -66,6 +66,7 @@ public class Enemy : MonoBehaviour
     }
     public void move()
     {
+        if (moveSpeed == 0) return ;
         if (movingToEnd)
         {
             // 向结束点移动
@@ -73,6 +74,11 @@ public class Enemy : MonoBehaviour
             if (Vector3.Distance(transform.position, endPoint) < 0.1f) // 到达结束点后改变方向
             {
                 movingToEnd = false;
+                Vector3 currentScale = transform.localScale;
+                // 反转 x 轴的缩放
+                currentScale.x *= -1;
+                // 应用新的缩放值
+                transform.localScale = currentScale;
             }
         }
         else
@@ -82,6 +88,11 @@ public class Enemy : MonoBehaviour
             if (Vector3.Distance(transform.position, startPoint) < 0.1f) // 到达起始点后改变方向
             {
                 movingToEnd = true;
+                Vector3 currentScale = transform.localScale;
+                // 反转 x 轴的缩放
+                currentScale.x *= -1;
+                // 应用新的缩放值
+                transform.localScale = currentScale;
             }
         }
     }

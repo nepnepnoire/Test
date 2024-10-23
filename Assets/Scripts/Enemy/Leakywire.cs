@@ -20,7 +20,6 @@ public class Leakywire : MonoBehaviour
         if(collision.tag=="Player") 
         {
             Debug.Log("You Die!");
-            collision.gameObject.SetActive(false);
         }
     }
 }
