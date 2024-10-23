@@ -14,6 +14,7 @@ public class PlayerAnimations : MonoBehaviour
         anim = GetComponent<Animator>();
         playerController = GetComponent<PlayerController>();
         physicsCheck = GetComponent<PhysicsCheck>();
+        rb = GetComponent<Rigidbody2D>();
     }
     public void Update()
     {
@@ -24,5 +25,8 @@ public class PlayerAnimations : MonoBehaviour
         anim.SetFloat("currentSpeed", Mathf.Abs(playerController.currentSpeed));
         anim.SetBool("isGround", physicsCheck.isGround);
         anim.SetBool("isDashing", playerController.isDashing);
+        anim.SetBool("isAttaching", playerController.isAttaching);
+        anim.SetFloat("yËÙ¶È",rb.velocity.y);
+        anim.SetBool("isGliding", playerController.isGliding);
     }
 }

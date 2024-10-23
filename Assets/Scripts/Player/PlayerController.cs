@@ -7,9 +7,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-
-
-
     public Rigidbody2D rb;
     private PhysicsCheck physicsCheck;
     public Vector2 inputDirection;
@@ -33,6 +30,10 @@ public class PlayerController : MonoBehaviour
     public bool isAttaching;//是否吸附
     public bool attachCondition;//吸附条件判断
     private float lastAttackTime;
+    [Header("滑翔参数")]
+    public float glidingSpeed;
+    public bool glideCondition;
+    public bool isGliding;
 
 
     public void Awake()
@@ -44,20 +45,21 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         dashingCondition = !physicsCheck.isGround;
+        glideCondition = !physicsCheck.isGround;
 
     }
 
     void Update()
     {
+        HandleJump();
         DashContinue();
         HandleDash();
         HandleAttach();
-        HandleJump();
         HandleAttack();
-        
+        HandleGlide();
     }
 
-
+    
 
     private void FixedUpdate()
     {
@@ -80,7 +82,6 @@ public class PlayerController : MonoBehaviour
                 currentSpeed = Mathf.Lerp(currentSpeed, speed * moveInput, Time.deltaTime * 10);
                 rb.velocity = new Vector2(currentSpeed * Time.deltaTime, rb.velocity.y);
             }
-            else HandleDash();
         }
 
         else
@@ -109,14 +110,14 @@ public class PlayerController : MonoBehaviour
 
     public void HandleJump()
     {
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (physicsCheck.isGround)//跳起来之后
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
                 dashingCondition = true;
             }
-             else if (isAttaching)//附着的时候
+            else if (isAttaching)//附着的时候
             {
                 rb.velocity = new Vector2(attachedJumpSpeed * -rb.transform.localScale.x, jumpSpeed);
                 transform.localScale = new Vector3(-rb.transform.localScale.x, 1, 1);
@@ -128,6 +129,7 @@ public class PlayerController : MonoBehaviour
 
     private void HandleDash()
     {
+        dashingCondition = !physicsCheck.isGround;
         if (Input.GetKey(KeyCode.LeftShift))
         {
             if (dashingCondition)
@@ -207,19 +209,29 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("Attach");
             //附着
-            if (Input.GetKey(KeyCode.A)||Input.GetKey(KeyCode.D))
-            //if(Input.GetKey(KeyCode.A))
+            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
             {
                 isAttaching = true;
                 rb.velocity = new Vector2(0, slideDownSpeed);
 
             }
-
-            else    isAttaching = false;
-
-
+            else isAttaching = false;
 
         }
+        else isAttaching = false;
+    }
+    private void HandleGlide()
+    {
+        glideCondition = (!physicsCheck.isGround) && (rb.velocity.y < 0);
+        if(glideCondition == true)
+        {
+            if(Input.GetKey(KeyCode.Space))
+            {
+                isGliding = true;
+                rb.velocity = new Vector2(rb.velocity.x, glidingSpeed);
+            }
+        }
+         else isGliding = false;
     }
 
     /*void CheckPlayerInput()

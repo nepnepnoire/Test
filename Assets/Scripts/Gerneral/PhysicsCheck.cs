@@ -7,7 +7,7 @@ public class PhysicsCheck : MonoBehaviour
     [Header("ºÏ≤‚≤Œ ˝")]
     public float checkRaduis;
     public LayerMask groundLayer;
-    //public LayerMask wallLayer;
+    public LayerMask wallLayer;
     public bool isGround;
     public bool isrightWall;
     public bool isleftWall;
@@ -24,9 +24,9 @@ public class PhysicsCheck : MonoBehaviour
         //ºÏ≤‚µÿ√Ê
         isGround = Physics2D.OverlapCircle((Vector2)transform.position + bottomOffset, checkRaduis, groundLayer);
         //ºÏ≤‚”“«Ω√Ê
-        isrightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, checkRaduis, groundLayer);
+        isrightWall = Physics2D.OverlapCircle((Vector2)transform.position + rightOffset, checkRaduis, wallLayer);
         //ºÏ≤‚◊Û«Ω√Ê
-        isleftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, checkRaduis, groundLayer);
+        isleftWall = Physics2D.OverlapCircle((Vector2)transform.position + leftOffset, checkRaduis, wallLayer);
 
     }
 
@@ -36,6 +36,5 @@ public class PhysicsCheck : MonoBehaviour
         Gizmos.DrawSphere((Vector2)transform.position + bottomOffset, checkRaduis);
         Gizmos.DrawSphere((Vector2)transform.position + rightOffset, checkRaduis);
         Gizmos.DrawSphere((Vector2)transform.position + leftOffset, checkRaduis);
-
     }
 }
