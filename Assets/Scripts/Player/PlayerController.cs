@@ -17,8 +17,6 @@ public class PlayerController : MonoBehaviour
     public float dashDis;
     public float dashDuration;//冲刺持续时间
     public float currentSpeed;//当前速度
-    public float slideDownSpeed;//下滑速度
-    public float attachedJumpSpeed;//蹬墙跳速度
     [Header("人物状态")]
     public bool isAttacking = false;//是否正在攻击
 
@@ -27,17 +25,23 @@ public class PlayerController : MonoBehaviour
     public float DashStartTimer;//冲刺计时器
     public float DashCDStartTimer;//冲刺冷却
     public float DashCD;
-    [Header("吸附参数")]
+    [Header("吸附和蹬墙跳参数")]
     public bool unlockAttach = false;
     public bool isAttaching;//是否吸附
     public bool attachCondition;//吸附条件判断
-    //public float attachCD;
-    //private float lastAttachTime = -1.0f;
+    public float slideDownSpeed;//下滑速度
+    public float attachedJumpSpeed;//蹬墙跳速度
+    private float wallJumpCooldown = 0.5f; // 蹬墙跳后的冷却时间
+    private float lastWallJumpTime = -1.0f; // 上次蹬墙跳的时间
+    private bool canInput = true; // 控制是否可以输入
+
     [Header("滑翔参数")]
     public bool unlockGlide = false;
     public float glidingSpeed;
     public bool glideCondition;
     public bool isGliding;
+    [Header("钩锁参数")]
+
 
     private float lastAttackTime;
 
@@ -122,6 +126,15 @@ public class PlayerController : MonoBehaviour
 
     public void HandleJump()
     {
+        // 检查是否在蹬墙跳冷却时间内
+        if (!canInput && Time.time < lastWallJumpTime + wallJumpCooldown)
+        {
+            // 禁用相同方向的输入
+            if ((Input.GetKey(KeyCode.A) && rb.velocity.x < 0) || (Input.GetKey(KeyCode.D) && rb.velocity.x > 0))
+            {
+                return; // 禁止输入
+            }
+        }
         if (Input.GetKey(KeyCode.Space))
         {
             if (physicsCheck.isGround)//跳起来之后
@@ -135,7 +148,14 @@ public class PlayerController : MonoBehaviour
                 rb.velocity = new Vector2(attachedJumpSpeed * -rb.transform.localScale.x, jumpSpeed);
                 transform.localScale = new Vector3(-rb.transform.localScale.x, 1, 1);
                 isAttaching = false;
+                lastWallJumpTime = Time.time; // 更新上次蹬墙跳的时间
+                canInput = false; // 禁用相同方向的输入
             }
+        }
+        else
+        {
+            // 如果没有按下空格键，重置输入状态
+            canInput = true;
         }
     }
 
