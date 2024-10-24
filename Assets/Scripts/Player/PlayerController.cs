@@ -7,9 +7,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    private bool isControlEnabled ; // 控制是否启用
     public Rigidbody2D rb;
     private PhysicsCheck physicsCheck;
     public Vector2 inputDirection;
+    
     [Header("基本参数")]
     public float speed;
     public float jumpSpeed;
@@ -19,10 +21,8 @@ public class PlayerController : MonoBehaviour
     public float currentSpeed;//当前速度
     public int maxHealth = 10;
     public int currentHealth = 10;
-    [Header("受伤无敌")]
-    public float invulnerableDuration;
-    private float invulnerableCounter;
-    public bool invulnerable;
+    
+    
     [Header("人物状态")]
     public bool isAttacking = false;//是否正在攻击
 
@@ -46,51 +46,143 @@ public class PlayerController : MonoBehaviour
     public float glidingSpeed;
     public bool glideCondition;
     public bool isGliding;
+
     [Header("钩锁参数")]
+    public bool unlockHook = false;
+    public float grappleDistance = 10f; // 抓钩的最大距离
+    public LayerMask hookLayer; // 钩锁点的层
+    public bool isGrappling = false; // 抓钩状态
+    public float pullForce = 10f; // 拉动的力量
+    public Vector3 grapplePoint; // 抓钩位置
 
-
+    private Vector2 checkpointPosition; // 存储检查点位置
+    private bool isDead = false; // 玩家是否死亡
+    [Header("攻击参数")]
+    public GameObject attackTriggerPrefab; // 用于设置攻击触发器的预制体
+    public float attackRange = 5f; // 攻击范围
     private float lastAttackTime;
+    [Header("受伤无敌")]
+    public float invulnerableDuration;
+    private float invulnerableCounter;
+    public bool invulnerable;
+    public int FixedScale;
+    public float knock_backSpeed;//击退水平速度
+    public float knock_upSpeed;//击退竖直速度
+
+
 
     public void Awake()
     {
         physicsCheck = GetComponent<PhysicsCheck>();
+        
     }
 
     public void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        checkpointPosition = transform.position; // 初始化检查点为当前玩家位置
         dashingCondition = !physicsCheck.isGround;
         glideCondition = !physicsCheck.isGround;
+        isControlEnabled = true;
+    }
 
+    public void DisableControls()
+    {
+        isControlEnabled = false; // 禁用控制
+    }
+
+    public void EnableControls()
+    {
+        isControlEnabled = true; // 启用控制
     }
 
     void Update()
-    {
-        if (unlockAttach)
-        {
-            HandleAttach();
-        }
-        DashContinue();
-        HandleJump();
-        HandleDash();
-        HandleAttack();
-        if (unlockGlide)
-        {
 
-            HandleGlide();
-        }
-        if (currentHealth <= 0)
+    {
+        if (isControlEnabled && !isDead) // 只有在控制启用且未死亡时才处理输入
         {
-            Debug.Log("Game Over!");
-            gameObject.SetActive(false);
+            
+
+            // 示例：检测玩家死亡
+            if (Input.GetKeyDown(KeyCode.R)) // 假设 R 键用于死亡
+            {
+                Die();
+            }
         }
+        //硬直状态无法操作
+        if (invulnerable)
+        {
+            InvulnerableCount();
+            knock_back();
+        }
+        else {
+            if (isControlEnabled)
+            {
+                if (unlockHook)
+                {
+                    HandleHook();
+                }
+                if (unlockAttach)
+                {
+                    HandleAttach();
+                }
+                DashContinue();
+                HandleJump();
+                HandleDash();
+                HandleAttack();
+                if (unlockGlide)
+                {
+
+                    HandleGlide();
+                }
+
+                if (currentHealth <= 0)
+                {
+                    Debug.Log("Game Over!");
+                    gameObject.SetActive(false);
+                }
+            }
+        }
+
+        
+        
+        
     }
 
+    public void TriggerInvulnerable()
+    {
+        if (!invulnerable)
+        {
+            invulnerable = true;
+            FixedScale = -(int)transform.localScale.x;
+            invulnerableCounter = invulnerableDuration;
+        }
+    }
+    public void knock_back()
+    {
+
+        rb.velocity = new Vector2(FixedScale * knock_backSpeed, 0);
+    }
+    private void InvulnerableCount()
+    {
+        if (invulnerable)
+        {
+            invulnerableCounter -= Time.deltaTime;
+            if (invulnerableCounter <= 0)
+            {
+                invulnerable = false;
+            }
+        }
+    }
 
 
     private void FixedUpdate()
     {
-        HandleMovement();
+        if (isControlEnabled&&!invulnerable) 
+        {
+            HandleMovement(); 
+        }
+        
     }
     private void HandleMovement()
     {
@@ -224,14 +316,29 @@ public class PlayerController : MonoBehaviour
                 //播放A动作
                 Debug.Log("Attack A");
                 isAttacking = true;
+                attackA();
                 lastAttackTime = Time.time;
             }
         }
     }
+    public void attackA()
+    {
+        Vector3 Scalex = new Vector3((int)transform.localScale.x, 0, 0);
+        // 计算攻击触发器的位置
+        Vector3 spawnPosition = transform.position + Scalex * attackRange; // 根据角色方向计算生成位置
 
+        // 生成攻击触发器
+        GameObject attackTrigger = Instantiate(attackTriggerPrefab, spawnPosition, Quaternion.identity);
+
+        // 设置攻击触发器的标签
+        attackTrigger.tag = "Pattack";
+        Destroy(attackTrigger, 0.2f); // 1秒后销毁
+
+    }
     public void Interact(Interact interactor)
     {
         Debug.Log("Press E to interact");
+        
     }
 
     private void HandleAttach()
@@ -292,4 +399,70 @@ public class PlayerController : MonoBehaviour
         }
         else isGliding = false;
     }
+
+    private void HandleHook()
+    {
+        if(physicsCheck.isGrapplePoint) {
+            //Debug.Log("Find hookpoint");
+            if (Input.GetKey(KeyCode.F)) // 按“E”键抓钩
+            {
+                canInput = false;
+                Grapple();
+                dashingCondition = true;
+            }
+
+            /*if (isGrappling)
+            {
+
+                
+                
+                    ReleaseGrapple();
+                
+            }*/
+        }
+        
+    }
+    private void Grapple()
+    {
+        // 获取抓钩点的碰撞体
+        Collider2D grappleCollider = Physics2D.OverlapCircle((Vector2)transform.position + physicsCheck.HookOffset, physicsCheck.checkHookRaduis, physicsCheck.HookLayer);
+        grapplePoint = grappleCollider.transform.position;
+        isGrappling = true;
+        // 施加力将角色拉向抓钩点
+        //Vector2 direction = (grapplePoint - transform.position).normalized; // 计算方向
+        //rb.AddForce(direction * pullForce, ForceMode2D.Impulse); // 施加力
+        transform.position = Vector2.MoveTowards(transform.position, grapplePoint,200*Time.deltaTime);
+        rb.gravityScale = 0;
+        if(transform.position == grapplePoint)
+        {
+            rb.gravityScale = 15;
+            rb.velocity = new Vector2(speed*(int)transform.localScale.x, jumpSpeed* (int)transform.localScale.y);
+             
+            canInput = true;
+        }
+    }
+
+
+        
+
+    /*private void ReleaseGrapple()
+    {
+        isGrappling = false;
+        rb.gravityScale = 15;
+    }*/
+
+    public void SetCheckpoint(Vector2 position)
+    {
+        checkpointPosition = position; // 更新检查点位置
+    }
+
+    public void Die()
+    {
+        isDead = true; // 设置死亡状态
+        transform.position = checkpointPosition; // 复活到检查点位置
+        isDead = false; // 恢复状态
+    }
+
 }
+
+

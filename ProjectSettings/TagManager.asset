@@ -6,6 +6,13 @@ TagManager:
   tags:
   - QuestionBlock
   - Enemy
+  - Hook
+  - NPC
+  - Attach Heart
+  - Attack
+  - Eattack
+  - Ground
+  - Pattack
   layers:
   - Default
   - TransparentFX
@@ -17,8 +24,8 @@ TagManager:
   - Wall
   - Player
   - Enemy
-  - 
-  - 
+  - Hook
+  - NPC
   - 
   - 
   - 

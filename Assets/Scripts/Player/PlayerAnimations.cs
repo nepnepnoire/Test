@@ -28,5 +28,6 @@ public class PlayerAnimations : MonoBehaviour
         anim.SetBool("isAttaching", playerController.isAttaching);
         anim.SetFloat("yËÙ¶È",rb.velocity.y);
         anim.SetBool("isGliding", playerController.isGliding);
+        anim.SetBool("isGrappling", playerController.isGrappling);
     }
 }

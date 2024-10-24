@@ -5,7 +5,13 @@ using UnityEngine;
 
 public class Robot : Enemy
 {
+    [Header("攻击参数")]
+    public GameObject attackTriggerPrefab; // 用于设置攻击触发器的预制体
+    public float attackRange = 10f; // 攻击范围
     Animator animator;
+
+    public float Cooldown = 2f; // 冷却时间
+    private float lastTime = 0f; // 上次攻击时间
 
     public override void Start()
     {
@@ -35,9 +41,28 @@ public class Robot : Enemy
             //Debug.Log("Opp");
         }
         transform.position = Vector3.MoveTowards(transform.position, player.position, 2 * moveSpeed * Time.deltaTime);
-        if(transform.position == player.position)
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+
+        if (distanceToPlayer <= attackRange)
         {
-            Debug.Log("I Catch U ,HAHAHAHAHAHAHA~~~~~~~~!!!!!!!!!");
+            if (Time.time >= lastTime + Cooldown)
+            {
+                generalAttack();
+                lastTime = Time.time; // 更新上次攻击时间
+            }
         }
+    }
+    void generalAttack()
+    {
+        Vector3 Scalex = new Vector3(0, 0, 0);
+        // 计算攻击触发器的位置
+        Vector3 spawnPosition = transform.position + Scalex * attackRange; // 根据角色方向计算生成位置
+
+        // 生成攻击触发器
+        GameObject attackTrigger = Instantiate(attackTriggerPrefab, spawnPosition, Quaternion.identity);
+
+        // 设置攻击触发器的标签
+        attackTrigger.tag = "Eattack";
+        Destroy(attackTrigger, 0.2f); // 1秒后销毁
     }
 }

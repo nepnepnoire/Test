@@ -10,8 +10,12 @@ public class Enemy : MonoBehaviour
     {
         idle,
         pursuit,
-        attacked
+        attacked,
+        generalAttack,
+        fire
     }
+    public EnemyManager manager;
+
     public int health;
     public int attack;
     public float moveSpeed = 2f; // 移动速度
@@ -27,11 +31,25 @@ public class Enemy : MonoBehaviour
 
     public EnemyState enemystate;
     // Start is called before the first frame update
+    [Header("受伤无敌")]
+    public float invulnerableDuration = 10f;
+    public float invulnerableCounter;
+    public bool invulnerable;
     public virtual void Start()
     {
         startPoint = transform.position;
+        manager = FindObjectOfType<EnemyManager>();
         endPoint = startPoint + new Vector3(patrolDistance, 0, 0); // 在 X 轴上计算结束点
         enemystate = EnemyState.idle;//初始化待机状态
+        GameObject target = GameObject.Find("Player"); // 假设目标对象名为"Player"
+        if (target != null)
+        {
+            player = target.transform;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Update is called once per frame
@@ -41,8 +59,12 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log("Destroy");
-            Destroy(gameObject);
+            manager.DestroyEnemy(this, 0);
         }
+    }
+    public virtual void attacked()
+    {
+        return;
     }
     public virtual void pursuit()
     {
@@ -62,6 +84,15 @@ public class Enemy : MonoBehaviour
             case EnemyState.attacked:
                 attacked();
                 break;
+        }
+    }
+    public virtual void TriggerInvulnerable()
+    {
+        if (!invulnerable)
+        {
+            invulnerable = true;
+            invulnerableCounter = invulnerableDuration;
+            enemystate= EnemyState.attacked;
         }
     }
     public void move()
@@ -100,32 +131,25 @@ public class Enemy : MonoBehaviour
     {
         if(enemystate == EnemyState.attacked) 
         {
-            //减少受击计时器
-            //if(Timer <= 0) break;
-            //else return;
-        }
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        if (distanceToPlayer <= detectionRange)
+            invulnerableCounter -= Time.deltaTime;
+            if (invulnerableCounter <= 0)
+            {
+                invulnerable = false;
+                enemystate = EnemyState.pursuit;
+            }
+        }else
         {
-            // 锁定玩家作为目标
-            enemystate = EnemyState.pursuit;//进入追击状态
-            Debug.Log("Target acquired: " + player.name);
+            float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+            if (distanceToPlayer <= detectionRange && player.gameObject.activeSelf)
+            {
+                // 锁定玩家作为目标
+                enemystate = EnemyState.pursuit;//进入追击状态
+                Debug.Log("Target acquired: " + player.name);
+            }
+            else
+            {
+                enemystate = EnemyState.idle;//进入待机状态
+            }
         }
-        else
-        {
-            enemystate = EnemyState.idle;//进入待机状态
-        }
-    }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            attacked();
-        }
-    }
-    public void attacked()
-    {
-        enemystate = EnemyState.attacked;
-        //击飞
     }
 }

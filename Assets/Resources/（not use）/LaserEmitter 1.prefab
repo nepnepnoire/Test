@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1aa3d2e4e98e0904e894d119a6591b1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
   health: 1
   attack: 0
   moveSpeed: 0
@@ -203,6 +204,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   enemystate: 0
+  invulnerableDuration: 10
+  invulnerableCounter: 0
+  invulnerable: 0
   laserPrefab: {fileID: 2605024074150508442, guid: f24f6ecce7a019a4095d318fffec5840,
     type: 3}
-  speed: 30
+  Cooldown: 3

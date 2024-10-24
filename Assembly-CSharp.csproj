@@ -59,26 +59,65 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Skill\SkillManager.cs" />
+    <Compile Include="Assets\Scripts\Gerneral\Checkpoint.cs" />
+    <Compile Include="Assets\Scripts\NPC.cs" />
+    <Compile Include="Assets\Scripts\Boss\Boss.cs" />
+    <Compile Include="Assets\Scripts\Skill\AttackSystem.cs" />
+    <Compile Include="Assets\Scripts\UI\DialogueManger.cs" />
+    <Compile Include="Assets\Scripts\UI\GameManager.cs" />
     <Compile Include="Assets\Scripts\Gerneral\Interact.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
+    <Compile Include="Assets\Scripts\Objects\HightLight.cs" />
     <Compile Include="Assets\Scripts\Gerneral\PhysicsCheck.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Enemypool.cs" />
+    <Compile Include="Assets\Scripts\Skill\missly.cs" />
+    <Compile Include="Assets\Scripts\Objects\Note.cs" />
     <Compile Include="Assets\Scripts\QuestionBlock.cs" />
     <Compile Include="Assets\Scripts\Enemy\Leakywire.cs" />
     <Compile Include="Assets\Scripts\Gerneral\Attack.cs" />
     <Compile Include="Assets\Scripts\NewBehaviourScript1.cs" />
+    <Compile Include="Assets\Scripts\Player\Grab.cs" />
     <Compile Include="Assets\Scripts\LaserObject.cs" />
     <Compile Include="Assets\Scripts\Enemy\Robot.cs" />
     <Compile Include="Assets\Scripts\NewBehaviourScript.cs" />
     <Compile Include="Assets\Scripts\EnemyManager.cs" />
+    <Compile Include="Assets\Scripts\Player\GetHeart.cs" />
     <Compile Include="Assets\Scripts\Gerneral\Character.cs" />
+    <Compile Include="Assets\Scripts\Skill\LaserSkillObject.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerState.cs" />
+    <Compile Include="Assets\Scripts\UI\PauseMenu.cs" />
+    <Compile Include="Assets\Scripts\UI\ButtonHoverEffect.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerAnimations.cs" />
+    <Compile Include="Assets\Scripts\UI\NoteUI.cs" />
     <Compile Include="Assets\Scripts\Skill\Skill.cs" />
     <Compile Include="Assets\Scripts\Enemy\Laser.cs" />
+    <Compile Include="Assets\Scripts\Boss\BossAnimation.cs" />
     <Compile Include="Assets\Scripts\Gerneral\CameraFollow.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1887703795996301879}
   - component: {fileID: 7851603073617434837}
   - component: {fileID: 5848581581824243782}
+  - component: {fileID: 1289676620390641997}
   m_Layer: 9
   m_Name: ScrapRobot 1
   m_TagString: Enemy
@@ -193,7 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c056d4e9a2cc2040a292cd9fbcecae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  manager: {fileID: 0}
+  health: 5
   attack: 0
   moveSpeed: 15
   patrolDistance: 20
@@ -203,3 +205,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   enemystate: 0
+  invulnerableDuration: 1
+  invulnerableCounter: 0
+  invulnerable: 0
+  attackTriggerPrefab: {fileID: 9080064854546801413, guid: 4a6d9d529059c5d49b5b53021f669ea0,
+    type: 3}
+  attackRange: 10
+  Cooldown: 2
+--- !u!114 &1289676620390641997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8533767752411514892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4322e777917d5f848b62f40812b89197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -5,25 +5,35 @@ using UnityEngine;
 public class Laser : Enemy
 {
     public GameObject laserPrefab; // 激光物体的预设
-    public float speed = 30f; // 激光速度
-    private float laserLength = 30f; // 激光长度
-    
-    public override void pursuit()
+    //public float speed = 30f; // 激光速度
+    //private float laserLength = 30f; // 激光长度
+
+    public float Cooldown = 3f; // 冷却时间
+    private float lastTime = 0f; // 上次攻击时间
+    public float fireInterval = 0.1f;//激光间隔
+
+    public override void Update()
     {
-        GameObject laser = Instantiate(laserPrefab, transform.position, Quaternion.identity);
-        LineRenderer lineRenderer = laser.GetComponent<LineRenderer>();
-
-        // 设置激光的起点和终点
-        lineRenderer.SetPosition(0, transform.position); // 起点
-        lineRenderer.SetPosition(1, transform.position + transform.right * laserLength); // 终点
-
-        // 向右发射激光
-        Rigidbody rb = laser.GetComponent<Rigidbody>();
-        if (rb != null)
+        if (Time.time >= lastTime + Cooldown)
         {
-            rb.velocity = transform.right * speed; // 向右发射
+            StartCoroutine(FireLasers());
+            lastTime = Time.time; // 更新上次攻击时间
         }
-        // 可以选择在一段时间后销毁激光
-        Destroy(laser, 1f); // 2秒后销毁
+    }
+    private IEnumerator FireLasers()
+    {
+        float totaltime = 0;
+        while (totaltime <= 1)
+        {
+            fireLaser();
+            yield return new WaitForSeconds(fireInterval);
+            totaltime += fireInterval;
+        }
+    }
+    void fireLaser()
+    {
+        Vector3 offset = new Vector3(10, 0, 0);
+        GameObject laser = Instantiate(laserPrefab, transform.position + offset, Quaternion.identity);
+        Destroy(laser, 1f); // 1秒后销毁
     }
 }
