@@ -27,14 +27,19 @@ public class PlayerController : MonoBehaviour
     public float DashStartTimer;//冲刺计时器
     public float DashCDStartTimer;//冲刺冷却
     public float DashCD;
+    [Header("吸附参数")]
+    public bool unlockAttach = false;
     public bool isAttaching;//是否吸附
     public bool attachCondition;//吸附条件判断
-    private float lastAttackTime;
+    //public float attachCD;
+    //private float lastAttachTime = -1.0f;
     [Header("滑翔参数")]
+    public bool unlockGlide = false;
     public float glidingSpeed;
     public bool glideCondition;
     public bool isGliding;
 
+    private float lastAttackTime;
 
     public void Awake()
     {
@@ -51,15 +56,22 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (unlockAttach)
+        {
+            HandleAttach();
+        }
         HandleJump();
         DashContinue();
         HandleDash();
-        HandleAttach();
         HandleAttack();
-        HandleGlide();
+        if (unlockGlide)
+        {
+
+            HandleGlide();
+        }
     }
 
-    
+
 
     private void FixedUpdate()
     {
@@ -110,7 +122,7 @@ public class PlayerController : MonoBehaviour
 
     public void HandleJump()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space))
         {
             if (physicsCheck.isGround)//跳起来之后
             {
@@ -119,6 +131,7 @@ public class PlayerController : MonoBehaviour
             }
             else if (isAttaching)//附着的时候
             {
+                Debug.Log("wallJumping");
                 rb.velocity = new Vector2(attachedJumpSpeed * -rb.transform.localScale.x, jumpSpeed);
                 transform.localScale = new Vector3(-rb.transform.localScale.x, 1, 1);
                 isAttaching = false;
@@ -203,35 +216,61 @@ public class PlayerController : MonoBehaviour
 
     private void HandleAttach()
     {
+        /*// 检查是否在冷却时间内
+        if (!isAttaching&& Time.time < lastAttachTime + attachCD)
+        {
+            isAttaching = false; // 在冷却期间禁止附着
+            return;
+        }*/
+
         attachCondition = (!physicsCheck.isGround) && (physicsCheck.isleftWall || physicsCheck.isrightWall);//离地且有墙
+
 
         if (attachCondition == true)
         {
-            //Debug.Log("Attach");
             //附着
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.D))
+            if ((Input.GetKey(KeyCode.A) && physicsCheck.isleftWall) || (Input.GetKey(KeyCode.D) && physicsCheck.isrightWall))
             {
+                //Debug.Log("Attach");
                 isAttaching = true;
                 rb.velocity = new Vector2(0, slideDownSpeed);
+                //lastAttachTime = Time.time;
 
             }
-            else isAttaching = false;
+            else
+            {
+                // 离开附着状态
+                if (isAttaching)
+                {
+                    isAttaching = false; // 更新附着状态
+                    //lastAttachTime = Time.time; // 更新离开附着时间
+                }
+            }
 
         }
-        else isAttaching = false;
+        else
+        {
+            // 离开附着状态
+            if (isAttaching)
+            {
+                isAttaching = false; // 更新附着状态
+                //lastAttachTime = Time.time; // 更新离开附着时间
+            }
+        }
     }
     private void HandleGlide()
     {
-        glideCondition = (!physicsCheck.isGround) && (rb.velocity.y < 0);
-        if(glideCondition == true)
+        glideCondition = (!physicsCheck.isGround) && (rb.velocity.y < 0) && (!isAttaching);
+        if (glideCondition == true)
         {
-            if(Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space))
             {
+                //Debug.Log("Glide");
                 isGliding = true;
                 rb.velocity = new Vector2(rb.velocity.x, glidingSpeed);
             }
         }
-         else isGliding = false;
+        else isGliding = false;
     }
 
     /*void CheckPlayerInput()
