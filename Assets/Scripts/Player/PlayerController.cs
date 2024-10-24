@@ -17,6 +17,12 @@ public class PlayerController : MonoBehaviour
     public float dashDis;
     public float dashDuration;//冲刺持续时间
     public float currentSpeed;//当前速度
+    public int maxHealth = 10;
+    public int currentHealth = 10;
+    [Header("受伤无敌")]
+    public float invulnerableDuration;
+    private float invulnerableCounter;
+    public bool invulnerable;
     [Header("人物状态")]
     public bool isAttacking = false;//是否正在攻击
 
@@ -64,14 +70,19 @@ public class PlayerController : MonoBehaviour
         {
             HandleAttach();
         }
-        HandleJump();
         DashContinue();
+        HandleJump();
         HandleDash();
         HandleAttack();
         if (unlockGlide)
         {
 
             HandleGlide();
+        }
+        if (currentHealth <= 0)
+        {
+            Debug.Log("Game Over!");
+            gameObject.SetActive(false);
         }
     }
 
@@ -158,12 +169,14 @@ public class PlayerController : MonoBehaviour
             canInput = true;
         }
     }
-
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        dashingCondition = false;
+    }
 
     private void HandleDash()
     {
-        dashingCondition = !physicsCheck.isGround;
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             if (dashingCondition)
             {
@@ -188,19 +201,6 @@ public class PlayerController : MonoBehaviour
             else
             {
                 rb.velocity = new Vector2((int)transform.localScale.x * dashSpeed, 0);
-            }
-        }
-        if (DashCDStartTimer > 0)
-        {
-            DashCDStartTimer -= Time.deltaTime;
-            dashingCondition = false;
-        }
-        else
-        {
-            if (physicsCheck.isGround)
-            {
-                isDashing = false;
-                dashingCondition = false;
             }
         }
     }
@@ -292,60 +292,4 @@ public class PlayerController : MonoBehaviour
         }
         else isGliding = false;
     }
-
-    /*void CheckPlayerInput()
-    {
-
-        walk_left = Input.GetKey(KeyCode.A);
-
-        walk_right = Input.GetKey(KeyCode.D);
-
-        walk = walk_right || walk_left;
-
-        jump = Input.GetKeyDown(KeyCode.W);
-    }*/
-    /*void UpdatePlayerPosition() {
-
-		Vector3 pos = transform.localPosition;
-		Vector3 scale = transform.localScale;
-
-		if (walk) {
-			if (walk_left) {
-				pos.x -= velocity.x * Time.deltaTime;
-				scale.x = -1;
-            }
-
-			if (walk_right) {
-				pos.x += velocity.x * Time.deltaTime;
-				scale.x = 1;
-            }
-            //pos = CheckWallRays (pos, scale.x);
-        }
-
-		if (jump && (playerState != PlayerState.jumping)) {
-			playerState = PlayerState.jumping;
-			velocity = new Vector2 (velocity.x, jumpvelocity);
-		}
-
-		if (playerState == PlayerState.jumping) {
-			pos.y += velocity.y * Time.deltaTime;
-			velocity.y -= gravity * Time.deltaTime;
-		}
-
-		if (velocity.y <= 0)  
-			pos = CheckFloorRays (pos);
-
-		transform.localPosition = pos;
-		transform.localScale = scale;
-		walk = false;
-		walk_left = false;
-		walk_right = false;
-		jump = false;
-
-    }*/
-
-
-
-
-
 }
