@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96caefca6c6e78b49ac8281527e17e74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  manager: {fileID: 0}
   health: 10
   attack: 0
   moveSpeed: 15
@@ -136,6 +137,9 @@ MonoBehaviour:
   invulnerableDuration: 1
   invulnerableCounter: 0
   invulnerable: 0
+  knock_backSpeed: 0
+  knock_upSpeed: 0
+  knock_backDuration: 0
   halfHP: 0
   change: 0
   Attackrange: 30
@@ -147,7 +151,9 @@ MonoBehaviour:
     type: 3}
   rightwavePrefab: {fileID: 9056957208396666728, guid: 539748f51ca711544ae9d8e74e9be81d,
     type: 3}
-  GeneralattackPrefab: {fileID: 5797631674324644577, guid: 73e735e88ec652148b955c676af556fe,
+  GeneralRightattackPrefab: {fileID: 5797631674324644577, guid: 73e735e88ec652148b955c676af556fe,
+    type: 3}
+  GeneralLeftattackPrefab: {fileID: 5797631674324644577, guid: 73e735e88ec652148b955c676af556fe,
     type: 3}
   isWalking: 0
   isFiring: 0

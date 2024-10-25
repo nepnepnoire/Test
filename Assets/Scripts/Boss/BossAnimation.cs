@@ -15,7 +15,6 @@ public class BossAnimation : MonoBehaviour
     public void Update()
     {
         SetAnimation();
-        
     }
     public void SetAnimation()
     {

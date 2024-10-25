@@ -31,6 +31,21 @@ public class Robot : Enemy
             animator.SetBool("isRushing", false);
         }
     }
+    public override void attacked()
+    {
+        StartCoroutine(knock_back());
+    }
+    public IEnumerator knock_back()
+    {
+        float totaltime = 0;
+        while (totaltime <= knock_backDuration)
+        {
+            totaltime += Time.deltaTime;
+            // 每帧移动一定的距离
+            transform.position += new Vector3(-knock_backSpeed * Time.deltaTime, knock_upSpeed * Time.deltaTime, 0);
+            yield return null; // 等待下一帧
+        }
+    }
     public override void pursuit()
     {
         if((player.position.x - transform.position.x)* transform.localScale.x < 0)

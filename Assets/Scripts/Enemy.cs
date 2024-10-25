@@ -35,6 +35,9 @@ public class Enemy : MonoBehaviour
     public float invulnerableDuration = 10f;
     public float invulnerableCounter;
     public bool invulnerable;
+    public float knock_backSpeed;//击退水平速度
+    public float knock_upSpeed;//击退竖直速度
+    public float knock_backDuration;
     public virtual void Start()
     {
         startPoint = transform.position;
@@ -58,7 +61,6 @@ public class Enemy : MonoBehaviour
         EnemyController();
         if (health <= 0)
         {
-            Debug.Log("Destroy");
             manager.DestroyEnemy(this, 0);
         }
     }
@@ -144,7 +146,6 @@ public class Enemy : MonoBehaviour
             {
                 // 锁定玩家作为目标
                 enemystate = EnemyState.pursuit;//进入追击状态
-                Debug.Log("Target acquired: " + player.name);
             }
             else
             {

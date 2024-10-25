@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  health: 2
+  health: 5
   attack: 0
   moveSpeed: 15
   patrolDistance: 20
@@ -208,6 +208,9 @@ MonoBehaviour:
   invulnerableDuration: 1
   invulnerableCounter: 0
   invulnerable: 0
+  knock_backSpeed: 10
+  knock_upSpeed: 0
+  knock_backDuration: 0.005
   attackTriggerPrefab: {fileID: 9080064854546801413, guid: 4a6d9d529059c5d49b5b53021f669ea0,
     type: 3}
   attackRange: 10

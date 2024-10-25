@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
     // 这个方法将在按钮点击时调用
     public void StartGame()
     {
-        SceneManager.LoadScene("Level1"); // 替换为你的游戏场景名称
+        SceneManager.LoadScene("Level1_REMOTE_1824"); // 替换为你的游戏场景名称
     }
 
     public void QuitGame()

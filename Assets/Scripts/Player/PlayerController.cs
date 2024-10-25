@@ -7,10 +7,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    private bool isControlEnabled ; // 控制是否启用
+    private bool isControlEnabled; // 控制是否启用
     public Rigidbody2D rb;
     private PhysicsCheck physicsCheck;
     public Vector2 inputDirection;
+    EnemyManager enemyManager;
 
     [Header("物理材质")]
     public PhysicsMaterial2D defaultMaterial; // 默认物理材质
@@ -24,8 +25,8 @@ public class PlayerController : MonoBehaviour
     public float currentSpeed;//当前速度
     public int maxHealth = 10;
     public int currentHealth = 10;
-    
-    
+
+
     [Header("人物状态")]
     public bool isAttacking = false;//是否正在攻击
 
@@ -77,7 +78,7 @@ public class PlayerController : MonoBehaviour
     public void Awake()
     {
         physicsCheck = GetComponent<PhysicsCheck>();
-        
+
     }
 
     public void Start()
@@ -86,6 +87,7 @@ public class PlayerController : MonoBehaviour
         checkpointPosition = transform.position; // 初始化检查点为当前玩家位置
         dashingCondition = !physicsCheck.isGround;
         glideCondition = !physicsCheck.isGround;
+        enemyManager = FindObjectOfType<EnemyManager>();
         isControlEnabled = true;
 
         // 设置初始物理材质
@@ -105,9 +107,15 @@ public class PlayerController : MonoBehaviour
     void Update()
 
     {
+        if (isDead)
+        {
+            Die();
+            currentHealth = maxHealth;
+            enemyManager.ReloadEnemies();
+        }
         if (isControlEnabled && !isDead) // 只有在控制启用且未死亡时才处理输入
         {
-            
+
 
             // 示例：检测玩家死亡
             if (Input.GetKeyDown(KeyCode.R)) // 假设 R 键用于死亡
@@ -121,7 +129,8 @@ public class PlayerController : MonoBehaviour
             InvulnerableCount();
             knock_back();
         }
-        else {
+        else
+        {
             if (isControlEnabled)
             {
                 if (unlockHook)
@@ -144,15 +153,16 @@ public class PlayerController : MonoBehaviour
 
                 if (currentHealth <= 0)
                 {
+
                     Debug.Log("Game Over!");
-                    gameObject.SetActive(false);
+                    isDead = true;
                 }
             }
         }
 
-        
-        
-        
+
+
+
     }
 
     public void TriggerInvulnerable()
@@ -184,12 +194,12 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isControlEnabled&&!invulnerable) 
+        if (isControlEnabled && !invulnerable)
         {
             HandleMovement();
             UpdateMaterial(); // 添加更改物理材质的方法
         }
-        
+
     }
     private void HandleMovement()
     {
@@ -305,9 +315,9 @@ public class PlayerController : MonoBehaviour
     }
     private void HandleAttack()
     {
-        if(Time.time-lastAttackTime > 0.35) 
+        if (Time.time - lastAttackTime > 0.35)
         {
-           isAttacking = false;
+            isAttacking = false;
         }
         if (Input.GetMouseButtonDown(0))
         {
@@ -350,7 +360,7 @@ public class PlayerController : MonoBehaviour
     public void Interact(Interact interactor)
     {
         Debug.Log("Press E to interact");
-        
+
     }
 
     private void HandleAttach()
@@ -414,7 +424,8 @@ public class PlayerController : MonoBehaviour
 
     private void HandleHook()
     {
-        if(physicsCheck.isGrapplePoint) {
+        if (physicsCheck.isGrapplePoint)
+        {
             //Debug.Log("Find hookpoint");
             if (Input.GetKey(KeyCode.F)) // 按“E”键抓钩
             {
@@ -423,9 +434,9 @@ public class PlayerController : MonoBehaviour
                 dashingCondition = true;
             }
 
-            
+
         }
-        
+
     }
     private void Grapple()
     {
@@ -436,9 +447,9 @@ public class PlayerController : MonoBehaviour
         // 施加力将角色拉向抓钩点
         //Vector2 direction = (grapplePoint - transform.position).normalized; // 计算方向
         //rb.AddForce(direction * pullForce, ForceMode2D.Impulse); // 施加力
-        transform.position = Vector2.MoveTowards(transform.position, grapplePoint,200*Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, grapplePoint, 200 * Time.deltaTime);
         rb.gravityScale = 0;
-        if(transform.position == grapplePoint)
+        if (transform.position == grapplePoint)
         {
             ReleaseGrapple();
         }

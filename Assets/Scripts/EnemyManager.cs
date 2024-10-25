@@ -15,10 +15,6 @@ public class EnemyManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ReloadEnemies();
-        }
     }
 
     private void LoadEnemies()

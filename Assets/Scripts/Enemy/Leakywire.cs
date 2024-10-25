@@ -20,7 +20,7 @@ public class Leakywire : Enemy
     {
         if(collision.tag=="Player") 
         {
-            collision.gameObject.SetActive(false);  
+            collision.gameObject.GetComponent<PlayerController>().currentHealth = 0;
         }
     }
 }
