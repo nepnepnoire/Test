@@ -209,4 +209,5 @@ MonoBehaviour:
   invulnerable: 0
   laserPrefab: {fileID: 2605024074150508442, guid: f24f6ecce7a019a4095d318fffec5840,
     type: 3}
-  Cooldown: 3
+  Cooldown: 10
+  fireInterval: 0.1

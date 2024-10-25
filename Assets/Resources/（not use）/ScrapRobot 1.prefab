@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   manager: {fileID: 0}
-  health: 5
+  health: 2
   attack: 0
   moveSpeed: 15
   patrolDistance: 20
