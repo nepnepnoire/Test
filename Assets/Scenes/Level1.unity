@@ -712221,12 +712221,12 @@ PrefabInstance:
     - target: {fileID: 553543150824161894, guid: a2921b55bcf164853960c853662332ad,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 48.6
+      value: 1027.82
       objectReference: {fileID: 0}
     - target: {fileID: 553543150824161894, guid: a2921b55bcf164853960c853662332ad,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 72.1
+      value: -80.66
       objectReference: {fileID: 0}
     - target: {fileID: 553543150824161894, guid: a2921b55bcf164853960c853662332ad,
         type: 3}
@@ -712315,6 +712315,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3642634180216879361, guid: a2921b55bcf164853960c853662332ad,
         type: 3}
+      propertyPath: slipperyMaterial
+      value: 
+      objectReference: {fileID: 6200000, guid: 67877f84ca035478ebed0ac8c79c8561, type: 2}
+    - target: {fileID: 3642634180216879361, guid: a2921b55bcf164853960c853662332ad,
+        type: 3}
       propertyPath: attackTriggerPrefab
       value: 
       objectReference: {fileID: 9080064854546801413, guid: 311b4ec221fcefd47ab1198092d0afb4,
@@ -712328,6 +712333,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720011543897745171, guid: a2921b55bcf164853960c853662332ad,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466687137591876179, guid: a2921b55bcf164853960c853662332ad,
+        type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6466687137591876179, guid: a2921b55bcf164853960c853662332ad,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8985491163235894269, guid: a2921b55bcf164853960c853662332ad,
         type: 3}

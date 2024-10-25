@@ -18,6 +18,9 @@ public class PhysicsCheck : MonoBehaviour
     public Vector2 leftOffset;
     public Vector2 HookOffset; // ×¥¹³Æ«ÒÆ
 
+    
+
+
     public void Update()
     {
         Check();
@@ -33,6 +36,11 @@ public class PhysicsCheck : MonoBehaviour
         //¼ì²â×¥¹³µã
         // ¼ì²â×¥¹³µã
         isGrapplePoint = Physics2D.OverlapCircle((Vector2)transform.position + HookOffset, checkHookRaduis, HookLayer);
+
+        
+        
+        
+
     }
 
 

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7811937695989480430}
   - component: {fileID: 1797656215405468573}
   - component: {fileID: 3118466836296320653}
+  - component: {fileID: -4315953292251502384}
   m_Layer: 0
   m_Name: PgeneralAttack 1
   m_TagString: Pattack
@@ -69,7 +70,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 9.599999, y: 9.599999}
+    oldSize: {x: 9.57, y: 11.63}
     newSize: {x: 9.599999, y: 9.599999}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -119,7 +120,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1391768516, guid: cce501014721b8d4ca1e4eec7e4903be, type: 3}
+  m_Sprite: {fileID: -1310191880, guid: 33a7955900b24f246b66fe334c765b62, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -130,3 +131,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &-4315953292251502384
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9080064854546801413}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f2dcef32fdbd74140b7b1086156e6167, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

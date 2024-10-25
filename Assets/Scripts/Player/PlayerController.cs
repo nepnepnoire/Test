@@ -11,7 +11,10 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D rb;
     private PhysicsCheck physicsCheck;
     public Vector2 inputDirection;
-    
+
+    [Header("物理材质")]
+    public PhysicsMaterial2D defaultMaterial; // 默认物理材质
+    public PhysicsMaterial2D slipperyMaterial; // 滑溜物理材质
     [Header("基本参数")]
     public float speed;
     public float jumpSpeed;
@@ -84,6 +87,9 @@ public class PlayerController : MonoBehaviour
         dashingCondition = !physicsCheck.isGround;
         glideCondition = !physicsCheck.isGround;
         isControlEnabled = true;
+
+        // 设置初始物理材质
+        rb.sharedMaterial = defaultMaterial;
     }
 
     public void DisableControls()
@@ -180,7 +186,8 @@ public class PlayerController : MonoBehaviour
     {
         if (isControlEnabled&&!invulnerable) 
         {
-            HandleMovement(); 
+            HandleMovement();
+            UpdateMaterial(); // 添加更改物理材质的方法
         }
         
     }
@@ -298,8 +305,13 @@ public class PlayerController : MonoBehaviour
     }
     private void HandleAttack()
     {
+        if(Time.time-lastAttackTime > 0.35) 
+        {
+           isAttacking = false;
+        }
         if (Input.GetMouseButtonDown(0))
         {
+
             if (isAttacking == true)
             {
                 //B动作
@@ -329,7 +341,7 @@ public class PlayerController : MonoBehaviour
 
         // 生成攻击触发器
         GameObject attackTrigger = Instantiate(attackTriggerPrefab, spawnPosition, Quaternion.identity);
-
+        attackTrigger.transform.localScale = new Vector3(transform.localScale.x, 1, 1);
         // 设置攻击触发器的标签
         attackTrigger.tag = "Pattack";
         Destroy(attackTrigger, 0.2f); // 1秒后销毁
@@ -411,14 +423,7 @@ public class PlayerController : MonoBehaviour
                 dashingCondition = true;
             }
 
-            /*if (isGrappling)
-            {
-
-                
-                
-                    ReleaseGrapple();
-                
-            }*/
+            
         }
         
     }
@@ -435,21 +440,20 @@ public class PlayerController : MonoBehaviour
         rb.gravityScale = 0;
         if(transform.position == grapplePoint)
         {
-            rb.gravityScale = 15;
-            rb.velocity = new Vector2(speed*(int)transform.localScale.x, jumpSpeed* (int)transform.localScale.y);
-             
-            canInput = true;
+            ReleaseGrapple();
         }
     }
 
 
-        
 
-    /*private void ReleaseGrapple()
+
+    private void ReleaseGrapple()
     {
         isGrappling = false;
         rb.gravityScale = 15;
-    }*/
+        rb.velocity = new Vector2(0, 0);
+        canInput = true;
+    }
 
     public void SetCheckpoint(Vector2 position)
     {
@@ -461,6 +465,18 @@ public class PlayerController : MonoBehaviour
         isDead = true; // 设置死亡状态
         transform.position = checkpointPosition; // 复活到检查点位置
         isDead = false; // 恢复状态
+    }
+
+    private void UpdateMaterial()
+    {
+        if (!physicsCheck.isGround) // 如果不在地面
+        {
+            rb.sharedMaterial = slipperyMaterial; // 设置为滑溜物理材质
+        }
+        else
+        {
+            rb.sharedMaterial = defaultMaterial; // 恢复为默认物理材质
+        }
     }
 
 }
