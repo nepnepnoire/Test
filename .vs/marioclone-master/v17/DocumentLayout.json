@@ -1,0 +1,120 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Unity\u9879\u76EE\\marioclone-master\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{07DEFB0A-2129-4236-E46E-BF9829831583}|Assembly-CSharp.csproj|e:\\unity\u9879\u76EE\\marioclone-master\\assets\\scripts\\editor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07DEFB0A-2129-4236-E46E-BF9829831583}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\editor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07DEFB0A-2129-4236-E46E-BF9829831583}|Assembly-CSharp.csproj|e:\\unity\u9879\u76EE\\marioclone-master\\assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07DEFB0A-2129-4236-E46E-BF9829831583}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\player.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07DEFB0A-2129-4236-E46E-BF9829831583}|Assembly-CSharp.csproj|E:\\Unity\u9879\u76EE\\marioclone-master\\assets\\scripts\\camerafollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07DEFB0A-2129-4236-E46E-BF9829831583}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\camerafollow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07DEFB0A-2129-4236-E46E-BF9829831583}|Assembly-CSharp.csproj|E:\\Unity\u9879\u76EE\\marioclone-master\\assets\\scripts\\castle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07DEFB0A-2129-4236-E46E-BF9829831583}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\castle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07DEFB0A-2129-4236-E46E-BF9829831583}|Assembly-CSharp.csproj|E:\\Unity\u9879\u76EE\\marioclone-master\\assets\\scripts\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07DEFB0A-2129-4236-E46E-BF9829831583}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemyai.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Editor.cs",
+              "DocumentMoniker": "E:\\Unity\u9879\u76EE\\marioclone-master\\Assets\\Scripts\\Editor.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Editor.cs",
+              "ToolTip": "E:\\Unity\u9879\u76EE\\marioclone-master\\Assets\\Scripts\\Editor.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Editor.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T07:40:23.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Player.cs",
+              "DocumentMoniker": "E:\\Unity\u9879\u76EE\\marioclone-master\\Assets\\Scripts\\Player.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Player.cs",
+              "ToolTip": "E:\\Unity\u9879\u76EE\\marioclone-master\\Assets\\Scripts\\Player.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Player.cs",
+              "ViewState": "AQIAAHUAAAAAAAAAAAAAAHUAAAAfAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T06:20:35.817Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CameraFollow.cs",
+              "DocumentMoniker": "E:\\Unity\u9879\u76EE\\marioclone-master\\Assets\\Scripts\\CameraFollow.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CameraFollow.cs",
+              "ToolTip": "E:\\Unity\u9879\u76EE\\marioclone-master\\Assets\\Scripts\\CameraFollow.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CameraFollow.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T07:07:45.524Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Castle.cs",
+              "DocumentMoniker": "E:\\Unity\u9879\u76EE\\marioclone-master\\Assets\\Scripts\\Castle.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\Castle.cs",
+              "ToolTip": "E:\\Unity\u9879\u76EE\\marioclone-master\\Assets\\Scripts\\Castle.cs",
+              "RelativeToolTip": "Assets\\Scripts\\Castle.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T07:07:32.465Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "EnemyAI.cs",
+              "DocumentMoniker": "E:\\Unity\u9879\u76EE\\marioclone-master\\Assets\\Scripts\\EnemyAI.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyAI.cs",
+              "ToolTip": "E:\\Unity\u9879\u76EE\\marioclone-master\\Assets\\Scripts\\EnemyAI.cs",
+              "RelativeToolTip": "Assets\\Scripts\\EnemyAI.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-19T07:07:23.793Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 509,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
